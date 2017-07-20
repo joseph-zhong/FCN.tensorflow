@@ -2,8 +2,8 @@
 Code ideas from https://github.com/Newmu/dcgan and tensorflow mnist dataset reader
 """
 import numpy as np
-import scipy.misc as misc
-
+# import scipy.misc as misc
+from scipy import misc
 
 class BatchDatset:
     files = []
@@ -40,6 +40,7 @@ class BatchDatset:
         print (self.annotations.shape)
 
     def _transform(self, filename):
+        print("Reading {}".format(filename))
         image = misc.imread(filename)
         if self.__channels and len(image.shape) < 3:  # make sure images are of shape(h,w,3)
             image = np.array([image for i in range(3)])
